@@ -4,6 +4,7 @@
     Author     : FRANKLIN
 --%>
 
+<%@page import="com.udea.entity.Clientes"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,22 +14,22 @@
     </head>
     <body>
         <%
-           String h= request.getParameter("id");
-           String i=(String) request.getAttribute("idc");
-        %>
+          
+          Clientes cliente = new Clientes();
+          cliente=(Clientes)request.getAttribute("cliente");
+         %>
         <div>
-            <h1>Editar Persona</h1>
+            <h1>Editar Persona(<%=cliente.getId()%>)</h1>
             <form action="/../concesionariodb/ServletClientes?action=actualizar">
-                ID:<br>
-                <input type="text" name="identificacion" value="<%=request.getAttribute("idc")%>">
-                <br>Nombre:<br>
-                <input type="text" name="nombre" value="">
-                <br>Contacto:<br>
-                <input type="text" name="contacto" value="">
-                <input type="hidden">
-                <br>
-                <input  type="submit" name="action" value="agregar" onclick="return confirm('Actualizar?')">
+                Nombre
+                <input type="hidden" name="ID" value="<%=cliente.getId()%>">
+                <input type="text" name="nombre" value="<%=cliente.getNombre()%>">
+                <br>telefono<br>
+                <input type="text" name="telefono" value="<%= cliente.getTelefono()%>">
+               
+                <input  type="submit" name="action" value="actualizar" >
             </form>
+                
         </div>
     </body>
 </html>

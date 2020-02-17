@@ -15,7 +15,6 @@
         <h1>GESTION VEHICULOS</h1>
         <div>
             <a href="/../concesionariodb/ServletAutos?action=listar">listar</a>
-            <a href="editar.jsp">editar</a>
             <a href="agregar.jsp">agregar</a>
         </div>
     </body>

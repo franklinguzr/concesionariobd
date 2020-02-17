@@ -32,8 +32,7 @@
             <%         
                 if (request.getAttribute("listaVentas")!=null) {
                 List<Ventas>listaVentas=(List)request.getAttribute("listaVentas");
-                
-                for (Ventas venta : listaVentas) {
+                 for (Ventas venta : listaVentas) {
                           
             %>
             <tbody>
@@ -41,6 +40,9 @@
                     <td> <%=venta.getId()%></td>
                     <td> <%=venta.getPlacaVehiculo()%></td>
                     <td> <%=venta.getIDcliente()%></td>
+                    <td> 
+                        <a  href="/../concesionariodb/ServletVentas?action=editar&ID=<%=venta.getId()%>">Editar</a>
+                    </td>
                     <td> 
                         <a onclick="return confirm('Esta seguro?')" href="/../concesionariodb/ServletVentas?action=eliminar&id=<%=venta.getId()%>">Eliminar</a>
                     </td>
@@ -50,7 +52,7 @@
                     }
                     
                 %>
-            <a  href="/../concesionariodb/ServletClientes?action=listar">Actualizar</a>
+            <a  href="/../concesionariodb/ServletVentas?action=listar">Actualizar</a>
             </tbody>
         </table>
 

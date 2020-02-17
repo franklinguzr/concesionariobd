@@ -39,6 +39,12 @@
                     <td><%= vehiculo.getModelo()%> </td>
                     <td><img width="100" height="100" src=<%=vehiculo.getFoto()%>>
                        </td>
+                       <td> 
+                        <a  href="/../concesionariodb/ServletAutos?action=editar&placa=<%=vehiculo.getPlaca()%>">Editar</a>
+                    </td>
+                    <td> 
+                        <a onclick="return confirm('Esta seguro?')" href="/../concesionariodb/ServletAutos?action=eliminar&placa=<%=vehiculo.getPlaca()%>">Eliminar</a>
+                    </td>
                     
                 </tr>
                 <%

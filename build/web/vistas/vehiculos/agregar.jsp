@@ -23,7 +23,6 @@
                 <input type="text" name="modelo">
                 <br>IMAGEN
                 <input type="file" name="foto" accept=".jpg,.png,.gif" >
-                <img src="">
                 <br>
                 <input  type="submit" name="action" value="agregar" >
             </form>

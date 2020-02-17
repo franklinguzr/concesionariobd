@@ -55,7 +55,21 @@ public class ServletVentas extends HttpServlet {
             }else if(accion.equals("eliminar")){
             ventasFacade.remove(ventasFacade.find(Integer.parseInt(request.getParameter("placa"))));
             url="vistas/ventas/listar.jsp";
+            }else if(accion.equals("editar")){
+            request.setAttribute("venta", ventasFacade.find(Integer.parseInt(request.getParameter("ID"))));
+            url="vistas/ventas/editar.jsp";
             }
+            else if(accion.equals("actualizar")){
+            Ventas venta= ventasFacade.find(Integer.parseInt(request.getParameter("ID")));
+             if (request.getParameter("cliente")!=null) {
+                   venta.setIDcliente(Integer.parseInt(request.getParameter("cliente")));
+             }
+                if (request.getParameter("vehiculo")!=null) {
+                    venta.setPlacaVehiculo(request.getParameter("vehiculo"));
+             }
+                 ventasFacade.edit(venta);
+             url="vistas/ventas/listar.jsp";
+        }
             RequestDispatcher pagina= request.getRequestDispatcher(url);
                 pagina.forward(request, response);
         }

@@ -40,9 +40,11 @@
                     <td> <%=cliente.getId()%></td>
                     <td> <%=cliente.getNombre()%></td>
                     <td> <%=cliente.getTelefono()%></td>
+                     <td> 
+                        <a  href="/../concesionariodb/ServletClientes?action=editar&ID=<%=cliente.getId()%>">Editar</a>
+                    </td>
                     <td> 
-                        <a href="/../concesionariodb/ServletClientes?action=editar&id<%=cliente.getId()%>&nombre<%=cliente.getNombre()%>&contacto<%=cliente.getTelefono()%>">editar</a>
-                        <a onclick="return confirm('Esta seguro?')" href="/../concesionariodb/ServletClientes?action=eliminar&id=<%=cliente.getId()%>">Eliminar</a>
+                         <a onclick="return confirm('Esta seguro?')" href="/../concesionariodb/ServletClientes?action=eliminar&id=<%=cliente.getId()%>">Eliminar</a>
                     </td>
                 </tr>
                 <%
