@@ -43,17 +43,16 @@ public class ServletVentas extends HttpServlet {
            String url=null;
            accion=request.getParameter("action");
             if(accion.equals("listar")){
-                System.out.println(ventasFacade.findAll().size());
             request.setAttribute("listaVentas", ventasFacade.findAll());
                 url="vistas/ventas/listar.jsp";
             }else if(accion.equals("agregar")){
             Ventas venta= new Ventas();
             venta.setPlacaVehiculo(request.getParameter("placa"));
-            venta.setIDcliente(Integer.parseInt(request.getParameter("id")));
+            venta.setIDcliente(Integer.parseInt(request.getParameter("Identificacion")));
             ventasFacade.create(venta);
             url="vistas/ventas/listar.jsp";
             }else if(accion.equals("eliminar")){
-            ventasFacade.remove(ventasFacade.find(Integer.parseInt(request.getParameter("placa"))));
+            ventasFacade.remove(ventasFacade.find(Integer.parseInt(request.getParameter("id"))));
             url="vistas/ventas/listar.jsp";
             }else if(accion.equals("editar")){
             request.setAttribute("venta", ventasFacade.find(Integer.parseInt(request.getParameter("ID"))));
@@ -64,8 +63,8 @@ public class ServletVentas extends HttpServlet {
              if (request.getParameter("cliente")!=null) {
                    venta.setIDcliente(Integer.parseInt(request.getParameter("cliente")));
              }
-                if (request.getParameter("vehiculo")!=null) {
-                    venta.setPlacaVehiculo(request.getParameter("vehiculo"));
+                if (request.getParameter("placa")!=null) {
+                    venta.setPlacaVehiculo(request.getParameter("placa"));
              }
                  ventasFacade.edit(venta);
              url="vistas/ventas/listar.jsp";

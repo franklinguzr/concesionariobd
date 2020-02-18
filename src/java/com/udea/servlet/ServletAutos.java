@@ -45,7 +45,6 @@ public class ServletAutos extends HttpServlet {
            String url=null;
            accion=request.getParameter("action");
             if(accion.equals("listar")){
-                System.out.println(vehiculosFacade.findAll().size());
             request.setAttribute("listarAutos", vehiculosFacade.findAll());
                 url="vistas/vehiculos/listar.jsp";
             }else if(accion.equals("agregar")){
