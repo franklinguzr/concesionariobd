@@ -56,23 +56,23 @@ public class ServletClientes extends HttpServlet {
             }else if(accion.equals("eliminar")){
             clientesFacade.remove(clientesFacade.find(Integer.parseInt(request.getParameter("id"))));
             url="vistas/clientes/listar.jsp";
-            }else if (accion.equals("editar")) {
-                request.setAttribute("idc", request.getParameter("id"));
-                request.setAttribute("nombrec", request.getParameter("nombre"));
-                request.setAttribute("contactoc", request.getParameter("contacto"));
-                url="vistas/clientes/editar.jsp";
+            }else if(accion.equals("editar")){
+             request.setAttribute("cliente", clientesFacade.find(Integer.parseInt(request.getParameter("ID"))));
+            url="vistas/clientes/editar.jsp";
             }
             else if(accion.equals("actualizar")){
-                String id=request.getParameter("identificacion");
-                String nombre=request.getParameter("nombre");
-                String contacto=request.getParameter("contacto");
-                Clientes cliente= new Clientes();
-                cliente.setId(Integer.parseInt(id));
-                cliente.setNombre(nombre);
-                cliente.setTelefono(contacto);
-             clientesFacade.edit(cliente);
-            url="vistas/clientes/listar.jsp";
-            }
+            Clientes cliente= clientesFacade.find(Integer.parseInt(request.getParameter("ID")));
+            
+                if (request.getParameter("nombre")!=null) {
+                    cliente.setNombre(request.getParameter("nombre"));
+             }
+                if (request.getParameter("telefono")!=null) {
+                    cliente.setTelefono(request.getParameter("telefono"));
+             }
+               
+                clientesFacade.edit(cliente);
+             url="vistas/clientes/listar.jsp";
+        }
             RequestDispatcher pagina= request.getRequestDispatcher(url);
                 pagina.forward(request, response);
             

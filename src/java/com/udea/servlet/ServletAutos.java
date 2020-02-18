@@ -45,7 +45,6 @@ public class ServletAutos extends HttpServlet {
            String url=null;
            accion=request.getParameter("action");
             if(accion.equals("listar")){
-                System.out.println(vehiculosFacade.findAll().size());
             request.setAttribute("listarAutos", vehiculosFacade.findAll());
                 url="vistas/vehiculos/listar.jsp";
             }else if(accion.equals("agregar")){
@@ -57,9 +56,29 @@ public class ServletAutos extends HttpServlet {
             vehiculosFacade.create(vehiculo);
             url="vistas/vehiculos/listar.jsp";
             }else if(accion.equals("eliminar")){
-            vehiculosFacade.remove(vehiculosFacade.find(Integer.parseInt(request.getParameter("placa"))));
+            vehiculosFacade.remove(vehiculosFacade.find(request.getParameter("placa")));
             url="vistas/vehiculos/listar.jsp";
+            }else if(accion.equals("editar")){
+            request.setAttribute("vehiculo", vehiculosFacade.find(request.getParameter("placa")));
+            url="vistas/vehiculos/editar.jsp";
             }
+            else if(accion.equals("actualizar")){
+            Vehiculos vehiculo= vehiculosFacade.find(request.getParameter("placa"));
+            
+                if (request.getParameter("marca")!=null) {
+            vehiculo.setMarca(request.getParameter("marca"));
+             }
+                if (request.getParameter("modelo")!=null) {
+            vehiculo.setModelo(request.getParameter("modelo"));
+             }
+                if (request.getParameter("foto")!=null) {
+                    vehiculo.setFoto(request.getParameter("foto"));
+                }
+                vehiculosFacade.edit(vehiculo);
+             url="vistas/vehiculos/listar.jsp";
+        }
+    
+            
             RequestDispatcher pagina= request.getRequestDispatcher(url);
                 pagina.forward(request, response);
         }

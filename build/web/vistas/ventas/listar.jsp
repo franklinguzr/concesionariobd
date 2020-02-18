@@ -16,44 +16,65 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>LISTAR VENTAS</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
-    <body>
-        
-        <h1>VENTAS</h1>
-        <table >
+    <body background="https://source.unsplash.com/twukN12EN7c/1920x1080">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+       <a class="navbar-brand" href="../../index.jsp">CONCESIONARIO</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="../clientes/menu.jsp">CLIENTES</a></li>
+      <li><a href="../vehiculos/menu.jsp">VEHICULOS</a></li>
+      <li class="active"><a href="menu.jsp">VENTAS</a></li>
+    </ul>
+  </div>
+</nav>
+  
+<div class="container">
+   <h1>Lista de ventas</h1>
+          <table id="tabla" class=" table table-hover" cellspacing="0" width="100%">
             <thead>
                 <tr>
-                    <th>ID VENTA</th>
-                    <th>PLACA VEHICULO</th>
-                    <th>ID CLIENTE</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">PLACA VEHICULO</th>
+                    <th scope="col">ID CLIENTE</th>
                 </tr>
             </thead>
-            <%         
+           <%         
                 if (request.getAttribute("listaVentas")!=null) {
                 List<Ventas>listaVentas=(List)request.getAttribute("listaVentas");
-                
-                for (Ventas venta : listaVentas) {
+                 for (Ventas venta : listaVentas) {
                           
             %>
             <tbody>
                 <tr>
-                    <td> <%=venta.getId()%></td>
-                    <td> <%=venta.getPlacaVehiculo()%></td>
-                    <td> <%=venta.getIDcliente()%></td>
-                    <td> 
-                        <a onclick="return confirm('Esta seguro?')" href="/../concesionariodb/ServletVentas?action=eliminar&id=<%=venta.getId()%>">Eliminar</a>
+                    <td>
+                        <b>  <%=venta.getId()%> </b>
+                    </td>
+                    <td>
+                       <b> <%=venta.getPlacaVehiculo()%></b>
+                    </td>
+                    <td><b><%=venta.getIDcliente()%></b></td>   
+                    <td>
+                        <div class="btn-group">
+                            <a  href="/../concesionariodb/ServletVentas?action=editar&ID=<%=venta.getId()%>">Editar</a> |
+                            <a onclick="return confirm('Esta seguro?')" href="/../concesionariodb/ServletVentas?action=eliminar&id=<%=venta.getId()%>">Eliminar</a>
+                    </div>
                     </td>
                 </tr>
                 <%
                     }
                     }
-                    
                 %>
-            <a  href="/../concesionariodb/ServletClientes?action=listar">Actualizar</a>
+                <a  href="/../concesionariodb/ServletVentas?action=listar">Actualizar Tabla</a>
             </tbody>
-        </table>
-
-        
+        </table>  
+ </div>
     </body>
 </html>
+
