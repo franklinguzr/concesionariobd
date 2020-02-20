@@ -20,12 +20,12 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-     <a class="navbar-brand" href="../../index.jsp">CONCESIONARIO</a>
+     <a class="navbar-brand" href="/concesionariodb/index.jsp">CONCESIONARIO</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="../clientes/menu.jsp">CLIENTES</a></li>
-      <li class="active"><a href="menu.jsp">VEHICULOS</a></li>
-      <li><a href="../ventas/menu.jsp">VENTAS</a></li>
+      <li><a href="/concesionariodb/vistas/clientes/menu.jsp">CLIENTES</a></li>
+      <li class="active"><a href="/concesionariodb/vistas/vehiculos/menu.jsp">VEHICULOS</a></li>
+      <li><a href="/concesionariodb/vistas/ventas/menu.jsp">VENTAS</a></li>
     </ul>
   </div>
 </nav>
@@ -44,20 +44,21 @@
                 </tr>
             </thead>
             <%
-                 if (request.getAttribute("listarAutos")!=null) {
+                if (request.getAttribute("listarAutos")!=null) {
                 List<Vehiculos>listaAutos=(List)request.getAttribute("listarAutos");  
                 for (Vehiculos vehiculo : listaAutos) {
+                    System.out.println(vehiculo.getFoto());
               %>
             <tbody>
                 <tr>
                     <td>
-                        <b>  <%=vehiculo.getPlaca()%> </b>
+                        <b><%=vehiculo.getPlaca()%> </b>
                     </td>
                     <td>
                        <b> <%=vehiculo.getMarca()%></b>
                     </td>
                     <td><b><%= vehiculo.getModelo()%> </b></td>   
-                    <td> <img source="<%= vehiculo.getFoto()%>" width="50"></td>
+                    <td> <img source="<%= vehiculo.getFoto()%>"  width="50"></td>
                     <td>
                         <div class="btn-group">
                             <a  href="/../concesionariodb/ServletAutos?action=editar&placa=<%=vehiculo.getPlaca()%>">Editar</a> |

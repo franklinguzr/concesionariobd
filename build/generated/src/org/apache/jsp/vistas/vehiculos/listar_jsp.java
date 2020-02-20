@@ -61,13 +61,12 @@ public final class listar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<nav class=\"navbar navbar-inverse\">\n");
       out.write("  <div class=\"container-fluid\">\n");
       out.write("    <div class=\"navbar-header\">\n");
-      out.write("      <a class=\"navbar-brand\" href=\"\">CONCESIONARIO</a>\n");
+      out.write("     <a class=\"navbar-brand\" href=\"/concesionariodb/index.jsp\">CONCESIONARIO</a>\n");
       out.write("    </div>\n");
       out.write("    <ul class=\"nav navbar-nav\">\n");
-      out.write("      <li><a href=\"#\">MENU PRINCIPAL</a></li>\n");
-      out.write("      <li><a href=\"vistas/clientes/menu.jsp\">CLIENTES</a></li>\n");
-      out.write("      <li class=\"active\"><a href=\"vistas/vehiculos/menu.jsp\">VEHICULOS</a></li>\n");
-      out.write("      <li><a href=\"vistas/ventas/menu.jsp\">VENTAS</a></li>\n");
+      out.write("      <li><a href=\"/concesionariodb/vistas/clientes/menu.jsp\">CLIENTES</a></li>\n");
+      out.write("      <li class=\"active\"><a href=\"/concesionariodb/vistas/vehiculos/menu.jsp\">VEHICULOS</a></li>\n");
+      out.write("      <li><a href=\"/concesionariodb/vistas/ventas/menu.jsp\">VENTAS</a></li>\n");
       out.write("    </ul>\n");
       out.write("  </div>\n");
       out.write("</nav>\n");
@@ -87,15 +86,16 @@ public final class listar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </thead>\n");
       out.write("            ");
 
-                 if (request.getAttribute("listarAutos")!=null) {
+                if (request.getAttribute("listarAutos")!=null) {
                 List<Vehiculos>listaAutos=(List)request.getAttribute("listarAutos");  
                 for (Vehiculos vehiculo : listaAutos) {
+                    System.out.println(vehiculo.getFoto());
               
       out.write("\n");
       out.write("            <tbody>\n");
       out.write("                <tr>\n");
       out.write("                    <td>\n");
-      out.write("                        <b>  ");
+      out.write("                        <b>");
       out.print(vehiculo.getPlaca());
       out.write(" </b>\n");
       out.write("                    </td>\n");
@@ -109,7 +109,7 @@ public final class listar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write(" </b></td>   \n");
       out.write("                    <td> <img source=\"");
       out.print( vehiculo.getFoto());
-      out.write("\" width=\"50\"></td>\n");
+      out.write("\"  width=\"50\"></td>\n");
       out.write("                    <td>\n");
       out.write("                        <div class=\"btn-group\">\n");
       out.write("                            <a  href=\"/../concesionariodb/ServletAutos?action=editar&placa=");

@@ -97,9 +97,7 @@ public class Vehiculos implements Serializable {
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-    public String foto(){
-    return this.foto.toString();
-    }
+    
     
     @Override
     public int hashCode() {

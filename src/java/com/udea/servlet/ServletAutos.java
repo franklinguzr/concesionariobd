@@ -8,10 +8,15 @@ package com.udea.servlet;
 import com.udea.ejb.VehiculosFacadeLocal;
 import com.udea.entity.Clientes;
 import com.udea.entity.Vehiculos;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -52,7 +57,7 @@ public class ServletAutos extends HttpServlet {
             vehiculo.setPlaca(request.getParameter("placa"));
             vehiculo.setMarca(request.getParameter("marca"));
             vehiculo.setModelo(request.getParameter("modelo"));
-            vehiculo.setFoto(request.getParameter("foto"));
+            vehiculo.setFoto((request.getParameter("foto")));
             vehiculosFacade.create(vehiculo);
             url="vistas/vehiculos/listar.jsp";
             }else if(accion.equals("eliminar")){

@@ -25,12 +25,12 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-       <a class="navbar-brand" href="../../index.jsp">CONCESIONARIO</a>
+       <a class="navbar-brand" href="/concesionariodb/index.jsp">CONCESIONARIO</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="../clientes/menu.jsp">CLIENTES</a></li>
-      <li><a href="../vehiculos/menu.jsp">VEHICULOS</a></li>
-      <li class="active"><a href="menu.jsp">VENTAS</a></li>
+      <li><a href="/concesionariodb/vistas/clientes/menu.jsp">CLIENTES</a></li>
+      <li><a href="/concesionariodb/vistas/vehiculos/menu.jsp">VEHICULOS</a></li>
+      <li class="active"><a href="/concesionariodb/vistas/menu.jsp">VENTAS</a></li>
     </ul>
   </div>
 </nav>

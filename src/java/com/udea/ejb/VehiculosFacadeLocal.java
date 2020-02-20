@@ -29,5 +29,5 @@ public interface VehiculosFacadeLocal {
     List<Vehiculos> findRange(int[] range);
 
     int count();
-    
+       
 }

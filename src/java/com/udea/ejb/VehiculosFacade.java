@@ -6,6 +6,11 @@
 package com.udea.ejb;
 
 import com.udea.entity.Vehiculos;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +33,5 @@ public class VehiculosFacade extends AbstractFacade<Vehiculos> implements Vehicu
     public VehiculosFacade() {
         super(Vehiculos.class);
     }
-    
+
 }
